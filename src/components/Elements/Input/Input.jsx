@@ -8,6 +8,7 @@ const Input = (props) => {
             className="w-full px-3 py-2 text-sm border rounded text-slate-700 placeholder:opacity-50" 
             placeholder={placeholder}
             name={name}
+            id={name}
         />
     )
 }
