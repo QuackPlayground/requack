@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import CardProduct from "../components/Fragments/CardProduct";
 import Button from "../components/Elements/Button";
+import Counter from "../components/Fragments/Counter";
 
 const products = [
     {
@@ -53,6 +54,9 @@ const ProductsPage = () => {
                         <CardProduct.Footer price={product.price} />
                     </CardProduct>
                 ))}
+            </div>
+            <div className="flex justify-center w-100">
+                <Counter />
             </div>
         </>
     )
