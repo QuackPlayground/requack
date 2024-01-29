@@ -2,6 +2,7 @@
 import CardProduct from "../components/Fragments/CardProduct";
 import Button from "../components/Elements/Button";
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 // import Counter from "../components/Fragments/Counter";
 
 const products = [
@@ -65,6 +66,27 @@ const ProductsPage = () => {
         }
     }
 
+
+    // useRef
+    // hampir sama dengan useState tapi tidak re-render component
+    // const cartRef = useRef(JSON.parse(localStorage.getItem("cart")) || []);
+
+    // const handleAddToCartRef = (id) => {
+    //     cartRef.current = [...cartRef.current, {id, qty: 1}]
+    //     localStorage.setItem("cart", JSON.stringify(cartRef.current));
+    // }
+
+    const totalPriceRef = useRef(null);
+
+    useEffect(() => {
+        if (cart.length > 0) {
+            totalPriceRef.current.style.display = "table-row";
+        } else {
+            totalPriceRef.current.style.display = "none";
+        }
+    }, [cart])
+
+
     return (
         <>
             <div className="flex items-center justify-end h-20 px-10 text-white bg-blue-600">
@@ -106,7 +128,7 @@ const ProductsPage = () => {
                                     </tr>
                                 )
                             })}
-                            <tr>
+                            <tr ref={totalPriceRef}>
                                 <td colSpan={3}><b>Total Price</b></td>
                                 <td><b>Rp {totalPrice.toLocaleString('id-ID', {styles: 'currency', currency: 'IDR'})}</b></td>
                             </tr>
